@@ -14,7 +14,6 @@ const state0 = {
 function rootReducer(state = state0, action) {
   switch (action.type) {
     case 'FETCHING_DUCKS':
-      console.log('fetching ducks')
       return Object.assign({}, state, {status:'fetching ducks'})
     case 'DUCKS_RECEIVED':
       return Object.assign({}, state, {status:'done fetching', ducks:state.ducks.concat(action.ducks)});

@@ -4,11 +4,13 @@ import { fetchDucksAction } from './actions'
 
 //--noncontainer to go inside container
 
-const DuckbuttonComponent = ({fetchDucks, status, ducks})=>(
+const DuckbuttonComponent = ({fetchDucks, loading, ducks})=>(
   <div>
+    {loading?<img src="spinning_duck.gif" alt="spinning duck" /> : <img src="static_duck.png" alt="duck" />}
+    <br />
     <button onClick={fetchDucks}>
       Fetch more ducks
-    </button> {status}
+    </button> 
     {ducks.map((duck)=>(<div>{duck.name}</div>))}
    </div>
 )
@@ -17,7 +19,7 @@ const DuckbuttonComponent = ({fetchDucks, status, ducks})=>(
 
 const mapStateToProps = state => ({
   ducks: state.ducks,
-  status: state.status
+  loading: state.loading
 })
 
 const mapDispatchToProps = dispatch => ({

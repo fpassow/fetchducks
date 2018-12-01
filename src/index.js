@@ -8,15 +8,15 @@ import Duckbutton from './duckbutton'
 
 const state0 = {
 	ducks: [{name:'noducks'}],
-  status: 'brave new pageload'
+  loading: false
 }
 
 function rootReducer(state = state0, action) {
   switch (action.type) {
     case 'FETCHING_DUCKS':
-      return Object.assign({}, state, {status:'fetching ducks'})
+      return Object.assign({}, state, {loading:true})
     case 'DUCKS_RECEIVED':
-      return Object.assign({}, state, {status:'done fetching', ducks:state.ducks.concat(action.ducks)});
+      return Object.assign({}, state, {loading:false, ducks:state.ducks.concat(action.ducks)});
     default:
       return state;
   }
